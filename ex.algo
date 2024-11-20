@@ -1,0 +1,27 @@
+ALGORITHM SommeCHash
+VAR
+    T : ARRAY_OF INTEGER[] := [2,10,3,6,5];
+    D : ARRAY_OF INTEGER[] := [5,3,4,1];
+    sum : INTEGER := 0;
+    H : HASH_TABLE<INTEGER,INTEGER>
+BEGIN
+
+    FOR i FROM 1 TO T.length STEP 1  DO
+        H.insert(T[i],1)
+    END_FOR
+
+    FOR i FROM 1 TO D.length STEP 1  DO
+         IF (H.lookup(D[i]) = TRUE) THEN
+            H.insert(D[i],2)
+         ELSE
+            H.insert(D[i],1)
+         END_IF
+    END_FOR
+
+    FOR i FROM 1 TO T.length STEP 1  DO
+        IF (H.get(T[i]) = 2) THEN
+            sum := sum + T[i] * 2
+        END_IF
+    END_FOR
+
+END
